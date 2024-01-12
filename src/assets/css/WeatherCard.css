@@ -1,0 +1,89 @@
+.weather-card {
+	background: linear-gradient(to bottom, #30cfd0 0%, #330867 100%);
+	color: white;
+	border-radius: 20px;
+	padding: 20px;
+	width: 400px;
+	position: relative;
+	overflow: hidden;
+	opacity: 0.9;
+}
+
+.weather-card5 {
+	background: linear-gradient(to bottom, #30cfd0 0%, #330867 100%);
+	color: white;
+	border-radius: 20px;
+	padding: 20px;
+	position: relative;
+	overflow: hidden;
+	opacity: 0.9;
+}
+
+.city-name {
+	font-size: 1.8em;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+.date {
+	font-size: 1.2em;
+	opacity: 0.8;
+}
+
+.temperature {
+	font-size: 2.5em;
+	font-weight: bold;
+}
+
+.weather-icon {
+	position: absolute;
+	top: 0px;
+	right: 20px;
+	width: 75px;
+	height: 75px;
+	height: auto;
+	opacity: 0;
+	transition: right 2s, opacity 2s;
+}
+
+.weather-card:hover .weather-icon {
+	right: 40%;
+	opacity: 1;
+}
+
+@keyframes slideIn {
+	from {
+		right: -50px;
+		opacity: 0;
+	}
+	to {
+		right: 20px;
+		opacity: 1;
+	}
+}
+
+/* .landscape {
+	position: absolute;
+	bottom: 0;
+} */
+
+.custom-list {
+	list-style: none;
+	padding: 0;
+}
+
+.list-group-item {
+	background-color: transparent;
+	border: none;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+
+.name-hover {
+	transition: color 0.3s ease-in-out;
+}
+
+.weather-card:hover .name-hover {
+	color: #31558f;
+}

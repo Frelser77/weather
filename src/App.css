@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+.App {
+	text-align: center;
+}
+
+body {
+	background-image: url("../public/img/bg.avif");
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: "Lato", sans-serif;
+	max-width: 100%;
+	max-height: 100%;
+}
+.opacity {
+	opacity: 0.8;
+}
