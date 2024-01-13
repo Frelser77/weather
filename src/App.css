@@ -4,12 +4,12 @@
 	text-align: center;
 }
 
-/* html {
+html {
 	height: 100%;
-} */
+}
 body {
 	background-image: url("../public/img/bg.avif");
-	background-size: 100%;
+	background-size: cover;
 	background-repeat: no-repeat;
 	font-family: "Lato", sans-serif;
 }

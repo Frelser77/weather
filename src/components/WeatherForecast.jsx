@@ -18,7 +18,7 @@ const WeatherForecast = ({ forecastData }) => {
 	};
 
 	const handleShowLess = () => {
-		setVisibleForecasts((0, visibleForecasts - 5));
+		setVisibleForecasts((0, visibleForecasts - visibleForecasts));
 		if (visibleForecasts - 5 <= 5) {
 			setShowMoreClicked(false);
 		}
