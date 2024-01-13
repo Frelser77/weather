@@ -64,7 +64,7 @@ const CityDetails = () => {
 	return (
 		<div>
 			<NavBar selectedCity={city} />
-			<h1 className="text-center my-4">Dettagli del Meteo per {city}</h1>
+			<h1 className="text-center my-4 fw-bold ">Dettagli del Meteo per {city}</h1>
 			{error && (
 				<Alert variant="danger" onClose={() => setError(null)} dismissible>
 					{error}
@@ -82,7 +82,7 @@ const CityDetails = () => {
 				</>
 			)}
 			{!weatherData && !error && <LoadingSpinner />}
-			<NavLink to="/" className="nav-link btn  my-3">
+			<NavLink to="/" className="nav-link btn my-3 my-link">
 				Torna alla Homepage
 			</NavLink>
 		</div>

@@ -44,7 +44,7 @@ const NavBar = ({ selectedCity }) => {
 
 	return (
 		<div>
-			<Navbar bg="light" expand="lg" className="mb-2">
+			<Navbar expand="lg" className="mb-2">
 				<Container>
 					<NavLink to="/" className="nav-link bg-warning rounded px-3 py-1 fs-5 fw-bold">
 						WeatherApp{selectedCity && ` - ${selectedCity}`}

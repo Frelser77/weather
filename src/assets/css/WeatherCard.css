@@ -46,6 +46,15 @@
 	transition: right 2s, opacity 2s;
 }
 
+.weather-icon2 {
+	position: absolute;
+	top: -15px;
+	right: 0px;
+	width: 75px;
+	height: 75px;
+	height: auto;
+}
+
 .weather-card:hover .weather-icon {
 	right: 40%;
 	opacity: 1;

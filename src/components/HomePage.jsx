@@ -43,6 +43,13 @@ const HomePage = () => {
 		const newFavorite = { cityName, lat, lon };
 		setFavorites([...favorites, newFavorite]);
 	};
+
+	const removeFavorite = (index) => {
+		const newFavorites = favorites.filter((_, i) => i !== index);
+		setFavorites(newFavorites);
+		localStorage.setItem("favorites", JSON.stringify(newFavorites));
+	};
+
 	return (
 		<>
 			<NavBar />
@@ -50,37 +57,39 @@ const HomePage = () => {
 				<Container>
 					<Row className="justify-content-center m-auto">
 						<Col md={6} lg={4}>
-							<Card className="text-center weather-card my-5">
-								<Card.Body>
-									<Card.Title>
-										<img
-											className="weather-icon"
-											src={`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`}
-											alt="Weather icon"
-										/>
-										<NavLink to={`/details/${currentWeather.name}`} className="nav-link name-hover city-name">
-											{currentWeather.name}
-										</NavLink>
-									</Card.Title>
-									<Card.Text>
-										<ListGroup variant="flush" className="custom-list">
-											<ListGroup.Item>{currentWeather.main.temp.toFixed(0)}°C</ListGroup.Item>
-											<ListGroup.Item>Alba: {convertUnixTimeToLocalTime(currentWeather.sys.sunrise)}</ListGroup.Item>
-											<ListGroup.Item>Tramonto: {convertUnixTimeToLocalTime(currentWeather.sys.sunset)}</ListGroup.Item>
-											<ListGroup.Item>Temperatura Percepita: {currentWeather.main.feels_like} °C</ListGroup.Item>
-											<ListGroup.Item>Condizioni: {currentWeather.weather[0].description}</ListGroup.Item>
-										</ListGroup>
-									</Card.Text>
-								</Card.Body>
-								<Card.Footer className="text-light date">
-									Aggiornamento: {convertUnixTimeToLocalTime(currentWeather.dt)}
-								</Card.Footer>
-							</Card>
+							<NavLink to={`/details/${currentWeather.name}`} className="nav-link">
+								<Card className="text-center weather-card my-5">
+									<Card.Body>
+										<Card.Title>
+											<img
+												className="weather-icon"
+												src={`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`}
+												alt="Weather icon"
+											/>
+											<h1 className="name-hover city-name">{currentWeather.name}</h1>
+										</Card.Title>
+										<Card.Text>
+											<ListGroup variant="flush" className="custom-list">
+												<ListGroup.Item>{currentWeather.main.temp.toFixed(0)}°C</ListGroup.Item>
+												<ListGroup.Item>Alba: {convertUnixTimeToLocalTime(currentWeather.sys.sunrise)}</ListGroup.Item>
+												<ListGroup.Item>
+													Tramonto: {convertUnixTimeToLocalTime(currentWeather.sys.sunset)}
+												</ListGroup.Item>
+												<ListGroup.Item>Temperatura Percepita: {currentWeather.main.feels_like} °C</ListGroup.Item>
+												<ListGroup.Item>Condizioni: {currentWeather.weather[0].description}</ListGroup.Item>
+											</ListGroup>
+										</Card.Text>
+									</Card.Body>
+									<Card.Footer className="text-light date">
+										Aggiornamento: {convertUnixTimeToLocalTime(currentWeather.dt)}
+									</Card.Footer>
+								</Card>
+							</NavLink>
 						</Col>
 					</Row>
 				</Container>
 			)}
-			<Favorites favorites={favorites} onAddFavorite={addFavorite} />
+			<Favorites favorites={favorites} onAddFavorite={addFavorite} onRemoveFavorite={removeFavorite} />
 		</>
 	);
 };
