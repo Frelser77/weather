@@ -70,7 +70,7 @@ const HomePage = () => {
 										</Card.Title>
 										<Card.Text>
 											<ListGroup variant="flush" className="custom-list">
-												<ListGroup.Item>{currentWeather.main.temp.toFixed(0)}°C</ListGroup.Item>
+												<ListGroup.Item className="celsius">{currentWeather.main.temp.toFixed(0)}°C</ListGroup.Item>
 												<ListGroup.Item>Alba: {convertUnixTimeToLocalTime(currentWeather.sys.sunrise)}</ListGroup.Item>
 												<ListGroup.Item>
 													Tramonto: {convertUnixTimeToLocalTime(currentWeather.sys.sunset)}

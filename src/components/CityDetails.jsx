@@ -82,9 +82,11 @@ const CityDetails = () => {
 				</>
 			)}
 			{!weatherData && !error && <LoadingSpinner />}
-			<NavLink to="/" className="nav-link btn my-3 my-link">
-				Torna alla Homepage
-			</NavLink>
+			<div className="d-flex align-items-end justify-content-end">
+				<NavLink to="/" className="nav-link btn my-3 my-link">
+					Torna alla Homepage
+				</NavLink>
+			</div>
 		</div>
 	);
 };

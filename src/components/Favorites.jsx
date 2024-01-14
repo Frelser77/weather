@@ -13,6 +13,7 @@ const Favorites = ({ favorites, onAddFavorite, onRemoveFavorite }) => {
 		try {
 			const geoResponse = await fetch(geocodingUrl);
 			const geoData = await geoResponse.json();
+			console.log(geoData);
 			if (geoData.length === 0) {
 				throw new Error("City not found");
 			}
@@ -33,7 +34,7 @@ const Favorites = ({ favorites, onAddFavorite, onRemoveFavorite }) => {
 		<Container>
 			<Row className="justify-content-center">
 				<Col md={6}>
-					<Form onSubmit={handleSubmit} className="mb-4 bg-dark p-3 rounded opacity">
+					<Form onSubmit={handleSubmit} className="mb-4 my-bg p-3 rounded">
 						<Form.Group controlId="formCityName">
 							<Form.Label className="fw-bold fs-3 text-light">Search City to add on favorites</Form.Label>
 							<Form.Control
@@ -50,7 +51,7 @@ const Favorites = ({ favorites, onAddFavorite, onRemoveFavorite }) => {
 					</Form>
 				</Col>
 			</Row>
-			<Row xs={1} md={3} lg={5}>
+			<Row xs={1} lg={2} xxl={3}>
 				<FavoritesList favorites={favorites} onRemoveFavorite={removeFavorite} />
 			</Row>
 		</Container>

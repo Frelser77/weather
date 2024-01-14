@@ -8,9 +8,10 @@ html {
 	height: 100%;
 }
 body {
-	background-image: url("../public/img/bg.avif");
+	/* background-image: url("../public/img/bg.avif"); */
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-position: center center;
 	font-family: "Lato", sans-serif;
 }
 .opacity {
@@ -21,7 +22,7 @@ body {
 	background-color: #212529;
 	color: white;
 	padding: 5px;
-	margin: auto;
+	margin: 15px;
 	width: 180px;
 	transition: background-color 0.2s ease-in-out;
 }
@@ -29,4 +30,9 @@ body {
 .my-link:hover {
 	background-color: #424649;
 	color: white;
+}
+
+.btn-position {
+	top: 10px;
+	right: 10px;
 }

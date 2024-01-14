@@ -40,6 +40,13 @@ const WeatherForecast = ({ forecastData }) => {
 					</Button>
 				</div>
 			)}
+			{visibleForecasts < forecastData.length && (
+				<div className="text-center mt-4">
+					<Button variant="dark" onClick={handleShowMore}>
+						Mostra di più
+					</Button>
+				</div>
+			)}
 			<Row xs={1} md={3} xl={5}>
 				{forecastData.slice(0, visibleForecasts).map((dayForecast, index) => (
 					<Col key={index}>
@@ -70,13 +77,7 @@ const WeatherForecast = ({ forecastData }) => {
 					</Col>
 				))}
 			</Row>
-			{visibleForecasts < forecastData.length && (
-				<div className="text-center mt-4">
-					<Button variant="dark" onClick={handleShowMore}>
-						Mostra di più
-					</Button>
-				</div>
-			)}
+
 			<Modal show={showModal} onHide={() => setShowModal(false)}>
 				<Modal.Header closeButton>
 					<Modal.Title>Alert</Modal.Title>

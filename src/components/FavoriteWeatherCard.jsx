@@ -30,7 +30,7 @@ const FavoriteWeatherCard = ({ lat, lon }) => {
 	if (error) return <div>Error: {error}</div>;
 
 	return (
-		<Card>
+		<Card className="weather-card">
 			<Card.Body>
 				<Card.Title>{weatherData.name || "Città Preferita"}</Card.Title>
 				<ListGroup variant="flush">
