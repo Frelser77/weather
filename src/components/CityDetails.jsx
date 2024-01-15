@@ -6,6 +6,7 @@ import LoadingSpinner from "./Loading";
 import WeatherForecast from "./WeatherForecast";
 import Alert from "react-bootstrap/Alert";
 import { Button } from "react-bootstrap";
+import getBackgroundImage from "./BackGroundImg";
 
 const CityDetails = () => {
 	const { city } = useParams();
@@ -13,6 +14,7 @@ const CityDetails = () => {
 	const [forecastData, setForecastData] = useState(null);
 	const [error, setError] = useState(null);
 	const [showForecast, setShowForecast] = useState(false);
+	const [backgroundImage, setBackgroundImage] = useState("");
 	// const navigate = useNavigate();
 
 	useEffect(() => {
@@ -61,8 +63,16 @@ const CityDetails = () => {
 		fetchWeather();
 	}, [city]);
 
+	useEffect(() => {
+		if (weatherData && weatherData.weather && weatherData.weather.length > 0) {
+			const weatherMain = weatherData.weather[0].main;
+			const backgroundImage = getBackgroundImage(weatherMain);
+			document.body.style.backgroundImage = backgroundImage;
+		}
+	}, [weatherData]);
+
 	return (
-		<div>
+		<>
 			<NavBar selectedCity={city} />
 			<h1 className="text-center my-4 fw-bold ">Dettagli del Meteo per {city}</h1>
 			{error && (
@@ -77,17 +87,17 @@ const CityDetails = () => {
 						<Button onClick={() => setShowForecast(!showForecast)} className="my-4 btn-dark">
 							{showForecast ? "Nascondi Previsioni" : "Mostra Previsioni"}
 						</Button>
+						{/* </div>
+					<div className="d-flex align-items-end justify-content-end"> */}
+						<NavLink to="/" className="nav-link btn my-3 my-link">
+							Torna alla Homepage
+						</NavLink>
 					</div>
 					{showForecast && <WeatherForecast forecastData={forecastData} />}
 				</>
 			)}
 			{!weatherData && !error && <LoadingSpinner />}
-			<div className="d-flex align-items-end justify-content-end">
-				<NavLink to="/" className="nav-link btn my-3 my-link">
-					Torna alla Homepage
-				</NavLink>
-			</div>
-		</div>
+		</>
 	);
 };
 

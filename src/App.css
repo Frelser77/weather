@@ -8,11 +8,12 @@ html {
 	height: 100%;
 }
 body {
-	/* background-image: url("../public/img/bg.avif"); */
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
 	font-family: "Lato", sans-serif;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	margin: 0;
+	opacity: 0.8;
 }
 .opacity {
 	opacity: 0.8;
@@ -21,7 +22,6 @@ body {
 .my-link {
 	background-color: #212529;
 	color: white;
-	padding: 5px;
 	margin: 15px;
 	width: 180px;
 	transition: background-color 0.2s ease-in-out;
@@ -35,4 +35,33 @@ body {
 .btn-position {
 	top: 10px;
 	right: 10px;
+}
+
+.favorite-card {
+	/* height: 150px; */
+	/* width: 250px; */
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+	background-size: cover;
+	color: white;
+	border-radius: 20px;
+}
+.my-scroll-zone {
+	max-height: 330px;
+	overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+	width: 0; /* Larghezza della barra di scorrimento */
+}
+
+::-webkit-scrollbar-track {
+	background: transparent; /* Colore dello sfondo della traccia */
+}
+
+::-webkit-scrollbar-thumb {
+	background: transparent; /* Colore della barra di scorrimento */
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: transparent; /* Colore della barra di scorrimento quando si passa il mouse */
 }

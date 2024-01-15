@@ -1,5 +1,4 @@
 .weather-card {
-	margin: auto;
 	cursor: pointer;
 	transition: max-height 2s;
 }

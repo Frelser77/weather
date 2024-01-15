@@ -11,7 +11,7 @@ const WeatherDetails = ({ weatherData }) => {
 	};
 
 	return (
-		<Card className="weather-card">
+		<Card className="weather-card mx-auto">
 			<img
 				src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
 				className="weather-icon"

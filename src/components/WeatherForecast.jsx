@@ -36,7 +36,7 @@ const WeatherForecast = ({ forecastData }) => {
 			{showMoreClicked && (
 				<div className="text-end">
 					<Button variant="light" onClick={handleShowLess}>
-						<FontAwesomeIcon icon={faTimes} /> Mostra di meno
+						<FontAwesomeIcon icon={faTimes} />
 					</Button>
 				</div>
 			)}
@@ -50,7 +50,7 @@ const WeatherForecast = ({ forecastData }) => {
 			<Row xs={1} md={3} xl={5}>
 				{forecastData.slice(0, visibleForecasts).map((dayForecast, index) => (
 					<Col key={index}>
-						<Card className="my-3 weather-card5">
+						<Card className="my-3 weather-card5 ">
 							<Card.Body>
 								<Card.Title>Data: {extractDate(dayForecast.dt_txt)}</Card.Title>
 								<img

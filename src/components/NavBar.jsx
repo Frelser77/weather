@@ -19,7 +19,7 @@ const NavBar = ({ selectedCity }) => {
 		try {
 			const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&appid=${apiKey}`);
 			if (response.ok) {
-				const data = await response.json();
+				// const data = await response.json();
 				// console.log(data);
 				navigate(`/details/${searchTerm}`);
 			} else {
@@ -43,20 +43,20 @@ const NavBar = ({ selectedCity }) => {
 	};
 
 	return (
-		<div>
+		<>
 			<Navbar expand="lg" className="mb-2">
 				<Container>
-					<NavLink to="/" className="nav-link bg-warning rounded px-3 py-1 fs-5 fw-bold">
+					<NavLink to="/" className="nav-link bg-dark text-light rounded px-3 py-1 fs-5 fw-bold">
 						WeatherApp{selectedCity && ` - ${selectedCity}`}
 					</NavLink>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="me-auto"></Nav>
-						<Form className="d-flex" onSubmit={handleSearchSubmit}>
+						<Form className="d-flex mt-2" onSubmit={handleSearchSubmit}>
 							<FormControl
 								type="search"
 								placeholder="Search City..."
-								className="mr-2"
+								className="mx-auto"
 								aria-label="Search"
 								value={searchTerm}
 								onChange={handleSearchChange}
@@ -76,7 +76,7 @@ const NavBar = ({ selectedCity }) => {
 					</Alert>
 				</Container>
 			)}
-		</div>
+		</>
 	);
 };
 
