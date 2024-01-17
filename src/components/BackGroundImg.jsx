@@ -1,39 +1,38 @@
 const getBackgroundImage = (weatherMain) => {
 	switch (weatherMain) {
 		case "Thunderstorm":
-			return `url(/img/bg-thunderstorm.png)`;
+			return "url(/img/bg-thunderstorm.png)";
 		case "Drizzle":
 			return "url(/img/bg-drizzle.png)";
 		case "Rain":
-			return "url(/img/bg-rain.jpg)";
+			return "url(/img/bg-rain.png)";
 		case "Snow":
-			return `/img/bg-snow.jpg`;
+			return "url(/img/bg-snow.png)";
 		case "Mist":
-			return `/img/bg-mist.jpg`;
+			return "url(/img/bg-mist.png)";
 		case "Smoke":
-			return `/img/bg-smoke.jpg`;
+			return "url(/img/bg-smoke.png)";
 		case "Haze":
-			return `/img/bg-haze.jpg`;
+			return "url(/img/bg-haze.png)";
 		case "Dust":
-			return `/img/bg-dust.jpg`;
+			return "url(/img/bg-dust.png)";
 		case "Fog":
-			return `/img/bg-fog.jpg`;
+			return "url(/img/bg-fog.png)";
 		case "Sand":
-			return `/img/bg-sand.jpg`;
+			return "url(/img/bg-sand.png)";
 		case "Ash":
-			return `/img/bg-ash.jpg`;
+			return "url(/img/bg-ash.png)";
 		case "Squall":
-			return `/img/bg-squall.jpg`;
+			return "url(/img/bg-squall.png)";
 		case "Tornado":
-			return `/img/bg-tornado.jpg`;
+			return "url(/img/bg-tornado.png)";
 		case "Clear":
-			return `/img/bg-sun.jpg`;
+			return "url(/img/bg-clear.png)";
 		case "Clouds":
-			return "url(/img/bg-scatteredClouds.jpg)";
+			return "url(/img/bg-clouds.png)";
 		default:
-			return "url(/images/default.jpg)";
+			return "url(/img/bg-default.png)";
 	}
 };
-// console.log(getBackgroundImage("Thunderstorm"));
 
 export default getBackgroundImage;

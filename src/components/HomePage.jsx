@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 import NavBar from "./NavBar";
-import "../assets/css/WeatherCard.css";
+import "../assets/css/WeatherDetails.css";
 import { NavLink } from "react-router-dom";
 import Favorites from "./Favorites";
 import getBackgroundImage from "./BackGroundImg";
 
 const HomePage = () => {
 	const [currentWeather, setCurrentWeather] = useState(null);
+	// eslint-disable-next-line no-unused-vars
 	const [backgroundImage, setBackgroundImage] = useState("");
 
 	useEffect(() => {
@@ -77,6 +78,7 @@ const HomePage = () => {
 			const weatherMain = currentWeather.weather[0].main;
 			const backgroundImage = getBackgroundImage(weatherMain);
 			document.body.style.backgroundImage = backgroundImage;
+			setBackgroundImage(backgroundImage);
 		}
 	}, [currentWeather]);
 
@@ -87,8 +89,8 @@ const HomePage = () => {
 				<Container fluid="sm">
 					<Row xs={1} xl={2} className="">
 						<Col>
-							<NavLink to={`/details/${currentWeather.name}`} className="nav-link">
-								<Card className="text-center weather-card my-2 mx-auto">
+							<NavLink to={`/details/${currentWeather.name}`} /*onClick={setBackgroundImage}*/ className="nav-link">
+								<Card className="text-center weather-card my-2 mx-1">
 									<Card.Body>
 										<Card.Title>
 											<img

@@ -14,6 +14,7 @@ const CityDetails = () => {
 	const [forecastData, setForecastData] = useState(null);
 	const [error, setError] = useState(null);
 	const [showForecast, setShowForecast] = useState(false);
+	// eslint-disable-next-line no-unused-vars
 	const [backgroundImage, setBackgroundImage] = useState("");
 	// const navigate = useNavigate();
 
@@ -68,13 +69,14 @@ const CityDetails = () => {
 			const weatherMain = weatherData.weather[0].main;
 			const backgroundImage = getBackgroundImage(weatherMain);
 			document.body.style.backgroundImage = backgroundImage;
+			setBackgroundImage(backgroundImage);
 		}
 	}, [weatherData]);
 
 	return (
 		<>
 			<NavBar selectedCity={city} />
-			<h1 className="text-center my-4 fw-bold ">Dettagli del Meteo per {city}</h1>
+			<h1 className="text-center my-4 fw-bold title">Weather details for {city}</h1>
 			{error && (
 				<Alert variant="danger" onClose={() => setError(null)} dismissible>
 					{error}
@@ -89,7 +91,7 @@ const CityDetails = () => {
 						</Button>
 						{/* </div>
 					<div className="d-flex align-items-end justify-content-end"> */}
-						<NavLink to="/" className="nav-link btn my-3 my-link">
+						<NavLink role="button" to="/" className="btn py-2 btn-dark my-3 my-link">
 							Torna alla Homepage
 						</NavLink>
 					</div>

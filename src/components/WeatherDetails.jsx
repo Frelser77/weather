@@ -1,7 +1,6 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import "../assets/css/WeatherDetails.css";
-import "../assets/css/WeatherCard.css";
 
 const WeatherDetails = ({ weatherData }) => {
 	const convertUnixTimeToLocalTime = (unixTime) => {
@@ -18,24 +17,36 @@ const WeatherDetails = ({ weatherData }) => {
 				alt="Weather icon"
 			/>
 			<Card.Body className="text-center mt-2">
-				<Card.Title className="city-name ">Meteo per {weatherData.name}</Card.Title>
-				<Card.Text>Temperatura: {weatherData.main.temp} °C</Card.Text>
+				<Card.Title className="city-name ms-1 fs-1">{weatherData.name}</Card.Title>
+				<Card.Text className="fs-1 mt-1">{Math.floor(weatherData.main.temp)} °C</Card.Text>
 				{/* Informazioni sempre visibili */}
-				<div className="weather-details-visible">
-					<p className="temperature">Temperatura Percepita: {weatherData.main.feels_like} °C</p>
-					<p className="temperature">Umidità: {weatherData.main.humidity}%</p>
-				</div>
+				<Row>
+					{/* Informazioni sempre visibili */}
+					<Col sm={6} className="text-center">
+						<p className="fs-3"> Perc. {Math.floor(weatherData.main.feels_like)} °C</p>
+					</Col>
+					<Col sm={6} className="text-center">
+						<p className="fs-3">Umidity: {Math.floor(weatherData.main.humidity)}%</p>
+					</Col>
+				</Row>
+
 				{/* Informazioni visibili solo al hover */}
-				<div className="weather-details-hover">
-					<p>
-						Minima: {weatherData.main.temp_min} °C, Massima: {weatherData.main.temp_max} °C
-					</p>
-					<p>Pressione: {weatherData.main.pressure} hPa</p>
-					<p>Condizioni: {weatherData.weather[0].description}</p>
-					<p>
-						Vento: {weatherData.wind.speed} m/s, Direzione: {weatherData.wind.deg}°
-					</p>
-				</div>
+				<Row>
+					<Col sm={6} className="text-center">
+						<p className="fs-4">
+							Min: {Math.floor(weatherData.main.temp_min)}°C Max: {Math.floor(weatherData.main.temp_max)} °C
+						</p>
+					</Col>
+					<Col sm={6} className="text-center">
+						<p className="fs-4">Condition: {weatherData.weather[0].description}</p>
+					</Col>
+					<Col>
+						<p className="fs-5">
+							Wind: {Math.floor(weatherData.wind.speed)} m/s, Direction: {Math.floor(weatherData.wind.deg)}°
+						</p>
+						<p className="fs-3">Pressure: {weatherData.main.pressure} hPa</p>
+					</Col>
+				</Row>
 				<p className="my-2 date">Time: {convertUnixTimeToLocalTime(weatherData.dt)}</p>
 			</Card.Body>
 		</Card>

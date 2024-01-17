@@ -20,9 +20,9 @@ const FavoritesList = ({ favorites, onRemoveFavorite }) => {
 							<Card.Body>
 								<Card.Title className="text-start fs-1">{favorite.cityName}</Card.Title>
 
-								<CardText className="fs-3">{favorite.temp}°C</CardText>
+								<CardText className="fs-3">{Math.floor(favorite.temp)}°C</CardText>
 								{/* Qui puoi aggiungere la chiamata API per ottenere le condizioni meteo */}
-								<CardText className="fs-4">Percepita: {favorite.feels_like}°C</CardText>
+								<CardText className="fs-4">Percepita: {Math.floor(favorite.feels_like)}°C</CardText>
 								<CardText className="fs-5">Condizioni: {favorite.condition}</CardText>
 								{/* Mostra i dati meteo come temperatura, condizioni, ecc. */}
 							</Card.Body>

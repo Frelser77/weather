@@ -1,58 +1,58 @@
 import React, { useState } from "react";
 import { Row, Col, Card, Container, ListGroup, ListGroupItem, Button, Modal } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import "../assets/css/WeatherCard.css";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import "../assets/css/WeatherDetails.css";
 const WeatherForecast = ({ forecastData }) => {
 	const [visibleForecasts, setVisibleForecasts] = useState(5);
-	const [showMoreClicked, setShowMoreClicked] = useState(false);
+	// const [showMoreClicked, setShowMoreClicked] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 
 	const handleShowMore = () => {
 		setVisibleForecasts(visibleForecasts + 5);
-		setShowMoreClicked(true);
+		// setShowMoreClicked(true);
 
 		if (visibleForecasts + 5 >= forecastData.length) {
 			setShowModal(true);
 		}
 	};
 
-	const handleShowLess = () => {
-		setVisibleForecasts((0, visibleForecasts - visibleForecasts));
-		if (visibleForecasts - 5 <= 5) {
-			setShowMoreClicked(false);
-		}
-	};
+	// const handleShowLess = () => {
+	// 	setVisibleForecasts((0, visibleForecasts - visibleForecasts));
+	// 	if (visibleForecasts - 5 <= 5) {
+	// 		setShowMoreClicked(false);
+	// 	}
+	// };
 
 	const extractDate = (dt_txt) => {
-		const [date, time] = dt_txt.split(" ");
-		const [year, month, day] = date.split("-");
-		return `${day}/${month}/${year} ${time}`;
+		const date = new Date(dt_txt);
+		const options = { weekday: "long", hour: "numeric", minute: "numeric" };
+		return date.toLocaleDateString("it-IT", options);
 	};
 
 	return (
 		<Container>
 			<h2 className="text-center mb-2 mt-3 text-light">Previsioni per i prossimi giorni</h2>
-			{showMoreClicked && (
+			{/* {showMoreClicked && (
 				<div className="text-end">
 					<Button variant="light" onClick={handleShowLess}>
 						<FontAwesomeIcon icon={faTimes} />
 					</Button>
 				</div>
-			)}
+			)} */}
 			{visibleForecasts < forecastData.length && (
-				<div className="text-center mt-4">
+				<div className="text-center mt-4 mb-2">
 					<Button variant="dark" onClick={handleShowMore}>
 						Mostra di più
 					</Button>
 				</div>
 			)}
-			<Row xs={1} md={3} xl={5}>
+			<Row xs={1} md={3} xl={5} className="flex-nowrap" style={{ maxHeight: "300", overflowX: "auto" }}>
 				{forecastData.slice(0, visibleForecasts).map((dayForecast, index) => (
-					<Col key={index}>
-						<Card className="my-3 weather-card5 ">
+					<Col key={index} className="">
+						<Card className=" weather-card5 h-75">
 							<Card.Body>
-								<Card.Title>Data: {extractDate(dayForecast.dt_txt)}</Card.Title>
+								<Card.Title className="fs-3">{extractDate(dayForecast.dt_txt)}</Card.Title>
 								<img
 									src={`http://openweathermap.org/img/w/${dayForecast.weather[0].icon}.png`}
 									alt="Weather icon"
@@ -60,15 +60,13 @@ const WeatherForecast = ({ forecastData }) => {
 								/>
 								<Card.Text>
 									<ListGroup className="custom-list">
-										<ListGroupItem>Max: {dayForecast.main.temp_max}°C</ListGroupItem>
-										<ListGroupItem>Min: {dayForecast.main.temp_min}°C</ListGroupItem>
+										<ListGroupItem>Max: {Math.floor(dayForecast.main.temp_max)}°C</ListGroupItem>
+										<ListGroupItem>Min: {Math.floor(dayForecast.main.temp_min)}°C</ListGroupItem>
 										{/* <ListGroupItem>Condizioni: {dayForecast.weather[0].description}</ListGroupItem> */}
-										<ListGroupItem>Umidità: {dayForecast.main.humidity}%</ListGroupItem>
-
-										<ListGroupItem>
-											Vento: {dayForecast.wind.speed} m/s, Direzione: {dayForecast.wind.deg}°<br />
-											Prob. Pioggia: {(dayForecast.pop * 100).toFixed(0)}%
-										</ListGroupItem>
+										<ListGroupItem>Umidità: {Math.floor(dayForecast.main.humidity)}%</ListGroupItem>
+										<ListGroupItem>Vento: {Math.floor(dayForecast.wind.speed)} m/s</ListGroupItem>
+										<ListGroupItem>Direzione: {Math.floor(dayForecast.wind.deg)}°</ListGroupItem>
+										<ListGroupItem>Prob. Pioggia:{Math.floor((dayForecast.pop * 100).toFixed(0))}%</ListGroupItem>
 										{/* altre informazioni */}
 									</ListGroup>
 								</Card.Text>
