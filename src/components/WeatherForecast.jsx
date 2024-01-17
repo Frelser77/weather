@@ -41,7 +41,7 @@ const WeatherForecast = ({ forecastData }) => {
 				</div>
 			)} */}
 			{visibleForecasts < forecastData.length && (
-				<div className="text-center mt-4 mb-2">
+				<div className="text-end mt-4 mb-2 me-1">
 					<Button variant="dark" onClick={handleShowMore}>
 						Mostra di più
 					</Button>

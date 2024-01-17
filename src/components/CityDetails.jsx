@@ -91,8 +91,8 @@ const CityDetails = () => {
 						</Button>
 						{/* </div>
 					<div className="d-flex align-items-end justify-content-end"> */}
-						<NavLink role="button" to="/" className="btn py-2 btn-dark my-3 my-link">
-							Torna alla Homepage
+						<NavLink role="button" to="/" className="btn btn-dark my-3 mx-2">
+							Home
 						</NavLink>
 					</div>
 					{showForecast && <WeatherForecast forecastData={forecastData} />}
