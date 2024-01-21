@@ -17,34 +17,36 @@ const WeatherDetails = ({ weatherData }) => {
 				alt="Weather icon"
 			/>
 			<Card.Body className="text-center mt-2">
-				<Card.Title className="city-name ms-1 fs-1">{weatherData.name}</Card.Title>
-				<Card.Text className="fs-1 mt-1">{Math.floor(weatherData.main.temp)} °C</Card.Text>
+				<Card.Title className="city-name ms-1 fs-1">
+					{weatherData.name} {Math.floor(weatherData.main.temp)} °C
+				</Card.Title>
+				<Card.Text className="text-end my-2">{weatherData.weather[0].description}</Card.Text>
 				{/* Informazioni sempre visibili */}
-				<Row>
+				<Row className="my-3">
 					{/* Informazioni sempre visibili */}
-					<Col sm={6} className="text-center">
-						<p className="fs-3"> Perc. {Math.floor(weatherData.main.feels_like)} °C</p>
+					<Col sm={6} className="">
+						<p className="fs-4"> +/- {Math.floor(weatherData.main.feels_like)} °C</p>
 					</Col>
-					<Col sm={6} className="text-center">
-						<p className="fs-3">Umidity: {Math.floor(weatherData.main.humidity)}%</p>
+					<Col sm={6} className="">
+						<p className="fs-4">Umidity: {Math.floor(weatherData.main.humidity)}%</p>
 					</Col>
 				</Row>
 
 				{/* Informazioni visibili solo al hover */}
 				<Row>
 					<Col sm={6} className="text-center">
-						<p className="fs-4">
+						<span className="fs-5">
 							Min: {Math.floor(weatherData.main.temp_min)}°C Max: {Math.floor(weatherData.main.temp_max)} °C
-						</p>
+						</span>
 					</Col>
-					<Col sm={6} className="text-center">
+					{/* <Col sm={6} className="text-center">
 						<p className="fs-4">Condition: {weatherData.weather[0].description}</p>
-					</Col>
+					</Col> */}
 					<Col>
-						<p className="fs-5">
+						{/* <p className="fs-5">
 							Wind: {Math.floor(weatherData.wind.speed)} m/s, Direction: {Math.floor(weatherData.wind.deg)}°
-						</p>
-						<p className="fs-3">Pressure: {weatherData.main.pressure} hPa</p>
+						</p> */}
+						<p className="fs-5">Pressure: {weatherData.main.pressure} hPa</p>
 					</Col>
 				</Row>
 				<p className="my-2 date">Time: {convertUnixTimeToLocalTime(weatherData.dt)}</p>

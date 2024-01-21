@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Col, Form, Button, Row } from "react-bootstrap";
 import FavoritesList from "./FavoriteList";
+import { addFavoriteAsync } from "../redux/slice/favoritesSlice";
 
 const Favorites = ({ favorites, onAddFavorite, onRemoveFavorite }) => {
 	const [cityName, setCityName] = useState("");
+	const dispatch = useDispatch();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -13,13 +16,12 @@ const Favorites = ({ favorites, onAddFavorite, onRemoveFavorite }) => {
 		try {
 			const geoResponse = await fetch(geocodingUrl);
 			const geoData = await geoResponse.json();
-			// console.log(geoData);
 			if (geoData.length === 0) {
 				throw new Error("City not found");
 			}
 
 			const { lat, lon } = geoData[0];
-			onAddFavorite(cityName, lat, lon);
+			dispatch(addFavoriteAsync({ cityName, lat, lon }));
 			setCityName("");
 		} catch (error) {
 			console.error("Errore durante la geocodifica della città:", error);
@@ -27,7 +29,7 @@ const Favorites = ({ favorites, onAddFavorite, onRemoveFavorite }) => {
 	};
 
 	const removeFavorite = (index) => {
-		onRemoveFavorite(index);
+		dispatch(removeFavorite(index));
 	};
 
 	return (

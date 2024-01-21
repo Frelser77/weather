@@ -47,12 +47,12 @@ const WeatherForecast = ({ forecastData }) => {
 					</Button>
 				</div>
 			)}
-			<Row xs={1} md={3} xl={5} className="flex-nowrap" style={{ maxHeight: "300", overflowX: "auto" }}>
+			<Row xs={1} md={3} xl={5} className="flex-nowrap" style={{ maxHeight: "350px", overflowX: "auto" }}>
 				{forecastData.slice(0, visibleForecasts).map((dayForecast, index) => (
 					<Col key={index} className="">
-						<Card className=" weather-card5 h-75">
+						<Card className=" weather-card5 h-100">
 							<Card.Body>
-								<Card.Title className="fs-3">{extractDate(dayForecast.dt_txt)}</Card.Title>
+								<Card.Title className="fs-4">{extractDate(dayForecast.dt_txt)}</Card.Title>
 								<img
 									src={`http://openweathermap.org/img/w/${dayForecast.weather[0].icon}.png`}
 									alt="Weather icon"
@@ -60,13 +60,17 @@ const WeatherForecast = ({ forecastData }) => {
 								/>
 								<Card.Text>
 									<ListGroup className="custom-list">
-										<ListGroupItem>Max: {Math.floor(dayForecast.main.temp_max)}°C</ListGroupItem>
-										<ListGroupItem>Min: {Math.floor(dayForecast.main.temp_min)}°C</ListGroupItem>
-										{/* <ListGroupItem>Condizioni: {dayForecast.weather[0].description}</ListGroupItem> */}
-										<ListGroupItem>Umidità: {Math.floor(dayForecast.main.humidity)}%</ListGroupItem>
-										<ListGroupItem>Vento: {Math.floor(dayForecast.wind.speed)} m/s</ListGroupItem>
-										<ListGroupItem>Direzione: {Math.floor(dayForecast.wind.deg)}°</ListGroupItem>
-										<ListGroupItem>Prob. Pioggia:{Math.floor((dayForecast.pop * 100).toFixed(0))}%</ListGroupItem>
+										<ListGroupItem className="fw-bold fs-3">
+											Max: {Math.floor(dayForecast.main.temp_max)}°C
+										</ListGroupItem>
+										<ListGroupItem className="fw-bold">Min: {Math.floor(dayForecast.main.temp_min)}°C</ListGroupItem>
+										<ListGroupItem className="fw-bold">Umidità: {Math.floor(dayForecast.main.humidity)}%</ListGroupItem>
+										<ListGroupItem className="fw-bold">
+											Prob. Pioggia:{Math.floor((dayForecast.pop * 100).toFixed(0))}%
+										</ListGroupItem>
+										{/* <ListGroupItem className="fw-bold">Condizioni: {dayForecast.weather[0].description}</ListGroupItem> */}
+										{/* <ListGroupItem className="fw-bold">Vento: {Math.floor(dayForecast.wind.speed)} m/s</ListGroupItem>
+										<ListGroupItem className="fw-bold">Direzione: {Math.floor(dayForecast.wind.deg)}°</ListGroupItem> */}
 										{/* altre informazioni */}
 									</ListGroup>
 								</Card.Text>

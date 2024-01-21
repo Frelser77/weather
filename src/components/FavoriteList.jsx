@@ -4,6 +4,7 @@ import { Card, Button, Col, CardText } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const FavoritesList = ({ favorites, onRemoveFavorite }) => {
+	console.log(favorites);
 	return (
 		<>
 			{favorites.map((favorite, index) => (
